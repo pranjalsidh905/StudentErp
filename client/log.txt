@@ -1,0 +1,105 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 487B 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/node:18
+#2 ...
+
+#3 [auth] library/nginx:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#4 [auth] library/node:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#5 [internal] load metadata for docker.io/library/nginx:alpine
+#5 ...
+
+#2 [internal] load metadata for docker.io/library/node:18
+#2 DONE 2.4s
+
+#5 [internal] load metadata for docker.io/library/nginx:alpine
+#5 DONE 2.4s
+
+#6 [internal] load .dockerignore
+#6 transferring context: 2B done
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 DONE 0.0s
+
+#8 [build 1/6] FROM docker.io/library/node:18@sha256:df9fa4e0e39c9b97e30240b5bb1d99bdb861573a82002b2c52ac7d6b8d6d773e
+#8 resolve docker.io/library/node:18@sha256:df9fa4e0e39c9b97e30240b5bb1d99bdb861573a82002b2c52ac7d6b8d6d773e 0.1s done
+#8 DONE 0.2s
+
+#9 [stage-1 1/2] FROM docker.io/library/nginx:alpine@sha256:4ff102c5d78d254a6f0da062b3cf39eaf07f01eec0927fd21e219d0af8bc0591
+#9 resolve docker.io/library/nginx:alpine@sha256:4ff102c5d78d254a6f0da062b3cf39eaf07f01eec0927fd21e219d0af8bc0591
+#9 resolve docker.io/library/nginx:alpine@sha256:4ff102c5d78d254a6f0da062b3cf39eaf07f01eec0927fd21e219d0af8bc0591 0.1s done
+#9 CACHED
+
+#7 [internal] load build context
+#7 transferring context: 2.69MB 4.8s
+#7 transferring context: 6.60MB 9.8s
+#7 transferring context: 7.04MB 10.5s done
+#7 DONE 11.5s
+
+#10 [build 2/6] WORKDIR /app
+#10 CACHED
+
+#11 [build 3/6] COPY package*.json ./
+#11 CACHED
+
+#12 [build 4/6] RUN npm install
+#12 CACHED
+
+#13 [build 5/6] COPY . .
+#13 DONE 101.5s
+
+#14 [build 6/6] RUN npm run build
+#14 4.667 
+#14 4.667 > client@0.1.0 build
+#14 4.667 > react-scripts build
+#14 4.667 
+#14 6.960 /app/node_modules/terser-webpack-plugin/node_modules/schema-utils/dist/validate.js:31
+#14 6.960   const ajv = new Ajv({
+#14 6.960               ^
+#14 6.960 
+#14 6.960 TypeError: Ajv is not a constructor
+#14 6.960     at /app/node_modules/terser-webpack-plugin/node_modules/schema-utils/dist/validate.js:31:15
+#14 6.960     at /app/node_modules/terser-webpack-plugin/node_modules/schema-utils/dist/util/memorize.js:20:44
+#14 6.960     at validateObject (/app/node_modules/terser-webpack-plugin/node_modules/schema-utils/dist/validate.js:174:26)
+#14 6.960     at validate (/app/node_modules/terser-webpack-plugin/node_modules/schema-utils/dist/validate.js:160:14)
+#14 6.960     at new TerserPlugin (/app/node_modules/terser-webpack-plugin/dist/index.js:171:5)
+#14 6.960     at module.exports (/app/node_modules/react-scripts/config/webpack.config.js:262:9)
+#14 6.960     at Object.<anonymous> (/app/node_modules/react-scripts/scripts/build.js:58:16)
+#14 6.960     at Module._compile (node:internal/modules/cjs/loader:1364:14)
+#14 6.960     at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+#14 6.960     at Module.load (node:internal/modules/cjs/loader:1203:32)
+#14 6.960 
+#14 6.960 Node.js v18.20.8
+#14 ERROR: process "/bin/sh -c npm run build" did not complete successfully: exit code: 1
+------
+ > [build 6/6] RUN npm run build:
+6.960     at validateObject (/app/node_modules/terser-webpack-plugin/node_modules/schema-utils/dist/validate.js:174:26)
+6.960     at validate (/app/node_modules/terser-webpack-plugin/node_modules/schema-utils/dist/validate.js:160:14)
+6.960     at new TerserPlugin (/app/node_modules/terser-webpack-plugin/dist/index.js:171:5)
+6.960     at module.exports (/app/node_modules/react-scripts/config/webpack.config.js:262:9)
+6.960     at Object.<anonymous> (/app/node_modules/react-scripts/scripts/build.js:58:16)
+6.960     at Module._compile (node:internal/modules/cjs/loader:1364:14)
+6.960     at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+6.960     at Module.load (node:internal/modules/cjs/loader:1203:32)
+6.960 
+6.960 Node.js v18.20.8
+------
+Dockerfile:11
+--------------------
+   9 |     # Copy all files and build the app
+  10 |     COPY . .
+  11 | >>> RUN npm run build
+  12 |     
+  13 |     # Step 2: Serve build using nginx
+--------------------
+ERROR: failed to solve: process "/bin/sh -c npm run build" did not complete successfully: exit code: 1
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/0baiez9owtg9mmlvdwixv80b0

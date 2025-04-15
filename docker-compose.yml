@@ -1,0 +1,36 @@
+services:
+  client:
+    image: pranjalsidh123/client:latest
+    container_name: client
+    ports:
+      - "3000:80"
+    networks:
+      - app-network
+
+  server:
+    image: pranjalsidh123/server
+    container_name: server
+    ports:
+      - "5000:5000"
+    environment:
+      - CONNECTION_URL=mongodb+srv://sidhpranjal905:hpzfWK67lEjlNh6Q@pranjal.xpskej1.mongodb.net/StudenErp?retryWrites=true&w=majority
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local
