@@ -1,6 +1,6 @@
 services:
   client:
-    image: pranjalsidh123/client:latest
+    image: 
     container_name: client
     ports:
       - "3000:80"
@@ -8,12 +8,12 @@ services:
       - app-network
 
   server:
-    image: pranjalsidh123/server
+    image: 
     container_name: server
     ports:
       - "5000:5000"
     environment:
-      - CONNECTION_URL=mongodb+srv://sidhpranjal905:hpzfWK67lEjlNh6Q@pranjal.xpskej1.mongodb.net/StudenErp?retryWrites=true&w=majority
+      - CONNECTION_URL= module://mongo:27017
     depends_on:
       - mongo
     networks:
